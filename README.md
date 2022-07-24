@@ -78,3 +78,6 @@ O    XXXXX    .......
 OOOOOXXXXX
      XXXXX
 ```
+
+## Postman Collection
+https://www.getpostman.com/collections/ef4cff644be293823f4a
