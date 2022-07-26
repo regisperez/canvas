@@ -13,7 +13,10 @@ import (
 
 var a App
 
-var uuidTest string
+var (
+	uuidTest string
+	uuidDrawingTest string
+)
 
 func TestMain(m *testing.M) {
 	a.Initialize("./app_test.toml")
@@ -169,4 +172,48 @@ func TestDeleteCanvas(t *testing.T) {
 	req, _ = http.NewRequest("GET", "/canvas/"+uuidTest, nil)
 	response = executeRequest(req)
 	checkResponseCode(t, http.StatusNotFound, response.Code)
+}
+
+func TestCreateCanvasRequest(t *testing.T) {
+	clearTable()
+
+	var jsonStr = []byte(`[
+		{
+		   "RectangleAt" : [14,0],
+		   "Width": 7,
+		   "Height":6,
+		   "Outline": "none",
+		   "Fill": "."
+		}, 
+		{
+		   "RectangleAt" : [0,3],
+		   "Width": 8,
+		   "Height":4,
+		   "Outline": "o",
+		   "Fill": "none"
+		 }
+	]`)
+	req, _ := http.NewRequest("POST", "/canvasCreateRequest", bytes.NewBuffer(jsonStr))
+	req.Header.Set("Content-Type", "application/json")
+
+	response := executeRequest(req)
+	checkResponseCode(t, http.StatusCreated, response.Code)
+
+	var m map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &m)
+
+	uuidDrawingTest = m["id"].(string)
+
+	if m["drawing"] != "              .......\n              .......\n              .......\noooooooo      .......\no      o      .......\no      o      .......\noooooooo             " {
+		t.Errorf("Expected canvas drawing to be '              .......\n              .......\n              .......\noooooooo      .......\no      o      .......\no      o      .......\noooooooo             '. Got '%v'", m["drawing"])
+	}
+
+}
+
+func TestGetCanvasResponse(t *testing.T) {
+
+	req, _ := http.NewRequest("GET", "/canvasResponse/"+uuidDrawingTest, nil)
+	response := executeRequest(req)
+
+	checkResponseCode(t, http.StatusOK, response.Code)
 }
