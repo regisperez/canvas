@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS `sketch_test`;
-CREATE DATABASE IF NOT EXISTS `sketch_test`;
-DROP DATABASE IF EXISTS `sketch`;
-CREATE DATABASE IF NOT EXISTS `sketch`;
-USE `sketch`;
-DROP TABLE IF EXISTS `canvas`;
-CREATE TABLE `canvas` (
+DROP DATABASE IF EXISTS sketch_test;
+CREATE DATABASE IF NOT EXISTS sketch_test;
+DROP DATABASE IF EXISTS sketch;
+CREATE DATABASE IF NOT EXISTS sketch;
+USE sketch;
+DROP TABLE IF EXISTS canvas;
+CREATE TABLE canvas (
                           `id` varchar(64) NOT NULL,
                           `drawing` varchar(1000) NOT NULL,
                           `creationdate` datetime NOT NULL,

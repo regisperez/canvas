@@ -163,7 +163,11 @@ func (a *App) createCanvasRequest(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		respondWithJSON(w, http.StatusBadRequest, err.Error())
 	}else{
-		respondWithJSON(w, http.StatusCreated, canvas)
+		respondWithJSON(w, http.StatusCreated, CanvasResponse{
+			ID:           canvas.ID,
+			Drawing:      strings.Split(canvas.Drawing, "\n"),
+			CreationDate: canvas.CreationDate,
+		})
 	}
 
 }

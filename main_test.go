@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"reflect"
+	"strings"
 	"testing"
 	"time"
 )
@@ -199,13 +201,21 @@ func TestCreateCanvasRequest(t *testing.T) {
 	response := executeRequest(req)
 	checkResponseCode(t, http.StatusCreated, response.Code)
 
-	var m map[string]interface{}
+	var (
+		m map[string]interface{}
+		returnSplit []string
+	)
 	json.Unmarshal(response.Body.Bytes(), &m)
 
 	uuidDrawingTest = m["id"].(string)
+	drawing:="              .......\n              .......\n              .......\noooooooo      .......\no      o      .......\no      o      .......\noooooooo             "
+	drawingSplit :=strings.Split(drawing, "\n")
 
-	if m["drawing"] != "              .......\n              .......\n              .......\noooooooo      .......\no      o      .......\no      o      .......\noooooooo             " {
-		t.Errorf("Expected canvas drawing to be '              .......\n              .......\n              .......\noooooooo      .......\no      o      .......\no      o      .......\noooooooo             '. Got '%v'", m["drawing"])
+	for _, v := range m["drawing"].([]interface{}) {
+		returnSplit = append(returnSplit, v.(string))
+	}
+	if  !reflect.DeepEqual(returnSplit,drawingSplit) {
+		t.Errorf("Expected canvas drawing to be '%v'. Got '%v'", drawingSplit,returnSplit)
 	}
 
 }
