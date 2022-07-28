@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: db
+    image: "mysql:latest"
+    restart: always
+    networks:
+      - default
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=sketch
+      - MYSQL_ROOT_PASSWORD=canvas
+    volumes:
+      - "./init.sql:/docker-entrypoint-initdb.d/1.sql"
+
+
+  app:
+    container_name: canvas
+    build: .
+    ports:
+      - "8010:8010"
+    networks:
+      - default
+    expose:
+      - 8010
+    depends_on:
+      - db
+    restart: on-failure
+    environment:
+      - DBUSER=root
+      - DBPASS=canvas
+      - DBNAME=sketch
+      - DBHOST=db
+      - DBPORT=3306
+
+  test:
+    image: golang:1.18
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/canvas
+      - /tmp/go:/go
+    working_dir: /usr/src/canvas
+    command: bash -c "go test --cover -v ./..."
+    restart: on-failure
