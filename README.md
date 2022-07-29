@@ -79,8 +79,6 @@ OOOOOXXXXX
      XXXXX
 ```
 
-### Solution
-
 ##Installation Guide
 - Golang
 - Docker
@@ -99,5 +97,43 @@ Now you can test the API endpoints.
   GET http://localhost:8010/canvasResponse/{id}
 ```
 
+###POST input example
+```
+  [
+    {
+       "RectangleAt" : [3,2],
+       "Width": 5,
+       "Height":3,
+       "Outline": "@",
+       "Fill": "X"
+    }, 
+    {
+       "RectangleAt" : [10,3],
+       "Width": 14,
+       "Height":6,
+       "Outline": "X",
+       "Fill": "O"
+     }
+  ]
+```
+
+###POST output example
+```
+  {
+    "id": "96a8c86a-b19a-4648-a107-866413365dd6",
+    "drawing": [
+        "                        ",
+        "                        ",
+        "   @@@@@                ",
+        "   @XXX@  XXXXXXXXXXXXXX",
+        "   @@@@@  XOOOOOOOOOOOOX",
+        "          XOOOOOOOOOOOOX",
+        "          XOOOOOOOOOOOOX",
+        "          XOOOOOOOOOOOOX",
+        "          XXXXXXXXXXXXXX"
+    ],
+    "creationDate": "2022-07-29 10:42:52"
+  }
+```
 ## Postman Collection
 The API CRUD endpoints and inputs are described at https://www.getpostman.com/collections/ef4cff644be293823f4a
