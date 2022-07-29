@@ -79,11 +79,11 @@ OOOOOXXXXX
      XXXXX
 ```
 
-##Installation Guide
+## Installation Guide
 - Golang
 - Docker
 - Docker-compose
-##Building and Running
+## Building and Running
 After the installation, inside the folder execute the command
 
 ```bash
@@ -91,13 +91,13 @@ After the installation, inside the folder execute the command
 ```
 Now you can test the API endpoints.
 
-##API challenge endpoints
+## API challenge endpoints
 ```
   POST http://localhost:8010/canvasCreateRequest
   GET http://localhost:8010/canvasResponse/{id}
 ```
 
-###POST input example
+### POST input example
 ```
   [
     {
@@ -117,7 +117,7 @@ Now you can test the API endpoints.
   ]
 ```
 
-###POST output example
+### POST output example
 ```
   {
     "id": "96a8c86a-b19a-4648-a107-866413365dd6",
