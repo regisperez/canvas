@@ -79,5 +79,25 @@ OOOOOXXXXX
      XXXXX
 ```
 
+### Solution
+
+##Installation Guide
+- Golang
+- Docker
+- Docker-compose
+##Building and Running
+After the installation, inside the folder execute the command
+
+```bash
+  docker-compose up
+```
+Now you can test the API endpoints.
+
+##API challenge endpoints
+```
+  POST http://localhost:8010/canvasCreateRequest
+  GET http://localhost:8010/canvasResponse/{id}
+```
+
 ## Postman Collection
-https://www.getpostman.com/collections/ef4cff644be293823f4a
+The API CRUD endpoints and inputs are described at https://www.getpostman.com/collections/ef4cff644be293823f4a
