@@ -81,7 +81,6 @@ func (a *App) getCanvasList(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	respondWithJSON(w, http.StatusOK, "Get Canvas List")
 	respondWithJSON(w, http.StatusOK, canvasList)
 }
 

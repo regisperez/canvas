@@ -28,7 +28,7 @@ services:
       - 8010
     depends_on:
       - db
-    restart: always
+    restart: on-failure
     environment:
       - DBUSER=root
       - DBPASS=canvas
