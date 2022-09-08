@@ -80,7 +80,6 @@ func (a *App) getCanvasList(w http.ResponseWriter, r *http.Request) {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
-	respondWithJSON(w, http.StatusOK, "getCanvasList")
 	respondWithJSON(w, http.StatusOK, canvasList)
 }
 
@@ -194,6 +193,11 @@ func (a *App) getCanvasResponse(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func (a *App) getDocker(w http.ResponseWriter, r *http.Request) {
+
+	respondWithJSON(w, http.StatusOK, "getDockerUpdate")
+}
+
 func respondWithError(w http.ResponseWriter, code int, message string) {
 	respondWithJSON(w, code, map[string]string{"error": message})
 }
@@ -214,4 +218,5 @@ func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/canvas/{id:[A-Za-z0-9\\W]+}", a.deleteCanvas).Methods("DELETE")
 	a.Router.HandleFunc("/canvasCreateRequest", a.createCanvasRequest).Methods("POST")
 	a.Router.HandleFunc("/canvasResponse/{id:[A-Za-z0-9\\W]+}", a.getCanvasResponse).Methods("GET")
+	a.Router.HandleFunc("/docker", a.getDocker).Methods("GET")
 }
