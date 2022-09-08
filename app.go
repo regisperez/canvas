@@ -195,7 +195,7 @@ func (a *App) getCanvasResponse(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) getDocker(w http.ResponseWriter, r *http.Request) {
 
-	respondWithJSON(w, http.StatusOK, "getDockerUpdate")
+	respondWithJSON(w, http.StatusOK, map[string]string{"getDocker": "success"})
 }
 
 func respondWithError(w http.ResponseWriter, code int, message string) {
