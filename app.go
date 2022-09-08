@@ -198,6 +198,12 @@ func (a *App) getDocker(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, http.StatusOK, map[string]string{"getDocker": "success"})
 }
 
+func (a *App) getDockerError(w http.ResponseWriter, r *http.Request) {
+
+	respondWithError(w, http.StatusNotFound, "Docker not found")
+}
+
+
 func respondWithError(w http.ResponseWriter, code int, message string) {
 	respondWithJSON(w, code, map[string]string{"error": message})
 }
@@ -219,4 +225,5 @@ func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/canvasCreateRequest", a.createCanvasRequest).Methods("POST")
 	a.Router.HandleFunc("/canvasResponse/{id:[A-Za-z0-9\\W]+}", a.getCanvasResponse).Methods("GET")
 	a.Router.HandleFunc("/docker", a.getDocker).Methods("GET")
+	a.Router.HandleFunc("/erroe", a.getDockerError).Methods("GET")
 }
