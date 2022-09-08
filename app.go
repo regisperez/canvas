@@ -80,7 +80,7 @@ func (a *App) getCanvasList(w http.ResponseWriter, r *http.Request) {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
-
+	respondWithJSON(w, http.StatusOK, "getCanvasList")
 	respondWithJSON(w, http.StatusOK, canvasList)
 }
 
