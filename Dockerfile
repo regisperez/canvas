@@ -13,4 +13,4 @@ RUN go mod download
 
 RUN go build -o canvas
 
-CMD ./canvas
+CMD canvas
