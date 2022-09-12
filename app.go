@@ -225,5 +225,5 @@ func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/canvasCreateRequest", a.createCanvasRequest).Methods("POST")
 	a.Router.HandleFunc("/canvasResponse/{id:[A-Za-z0-9\\W]+}", a.getCanvasResponse).Methods("GET")
 	a.Router.HandleFunc("/docker", a.getDocker).Methods("GET")
-	a.Router.HandleFunc("/erroe", a.getDockerError).Methods("GET")
+	a.Router.HandleFunc("/error", a.getDockerError).Methods("GET")
 }
