@@ -19,9 +19,7 @@ services:
 
   app:
     container_name: canvas
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "8010:8010"
     networks:
@@ -31,6 +29,7 @@ services:
     depends_on:
       - db
     restart: always
+    command: /canvas
     volumes:
       - .:/go/src/canvas
     environment:
