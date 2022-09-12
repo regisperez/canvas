@@ -4,7 +4,7 @@ ENV GO111MODULE=on
 
 COPY ./ /go/src/canvas
 
-WORKDIR /go/src/canvas/code
+WORKDIR /go/src/canvas
 
 COPY go.mod ./
 COPY go.sum ./
