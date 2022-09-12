@@ -29,6 +29,8 @@ services:
     depends_on:
       - db
     restart: always
+    volumes:
+      - .:/home/ec2-user/canvas-test
     environment:
       - DBUSER=root
       - DBPASS=canvas
@@ -41,7 +43,7 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/home/ec2-user/canvas-test
+      - .:/usr/src/canvas
       - /tmp/go:/go
     working_dir: /usr/src/canvas
     command: bash -c "go test --cover -v ./..."
