@@ -200,7 +200,7 @@ func (a *App) getDocker(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) getDockerError(w http.ResponseWriter, r *http.Request) {
 
-	respondWithError(w, http.StatusNotFound, "Docker AWS COMPOSE HOT RELOAD FINALLY")
+	respondWithError(w, http.StatusNotFound, "Docker AWS COMPOSE HOT RELOAD FINALLY Hell Yeah!!")
 }
 
 
