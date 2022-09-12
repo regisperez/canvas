@@ -41,7 +41,7 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/usr/src/canvas
+      - .:/home/ec2-user/canvas-test
       - /tmp/go:/go
     working_dir: /usr/src/canvas
     command: bash -c "go test --cover -v ./..."
