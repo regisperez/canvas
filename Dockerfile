@@ -11,6 +11,8 @@ COPY go.sum ./
 
 RUN go mod download
 
-RUN go build -o /canvas
+RUN go get github.com/githubnemo/CompileDaemon
 
-CMD [ "/canvas" ]
+RUN go install github.com/githubnemo/CompileDaemon
+
+ENTRYPOINT CompileDaemon --build="go build -o canvas" --command=./canvas

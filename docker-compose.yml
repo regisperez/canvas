@@ -29,7 +29,6 @@ services:
     depends_on:
       - db
     restart: always
-    command: /canvas
     volumes:
       - .:/go/src/canvas
     environment:

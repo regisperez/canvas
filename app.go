@@ -200,7 +200,7 @@ func (a *App) getDocker(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) getDockerError(w http.ResponseWriter, r *http.Request) {
 
-	respondWithError(w, http.StatusNotFound, "Docker error compose with go build automati with docker")
+	respondWithError(w, http.StatusNotFound, "Docker error compose with go build automatic finally")
 }
 
 
