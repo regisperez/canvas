@@ -19,7 +19,9 @@ services:
 
   app:
     container_name: canvas
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8010:8010"
     networks:
