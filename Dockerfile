@@ -15,7 +15,4 @@ COPY . . ./
 
 RUN go build -o /canvas
 
-EXPOSE 8080
-
 CMD [ "/canvas" ]
-

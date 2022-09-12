@@ -31,7 +31,7 @@ services:
     restart: always
     volumes:
       - .:/go/src/canvas
-    command: bash -c "go build && ./canvas"
+    command: bash -c "go build -o /canvas && /canvas"
     environment:
       - DBUSER=root
       - DBPASS=canvas
