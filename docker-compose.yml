@@ -30,7 +30,7 @@ services:
       - db
     restart: always
     volumes:
-      - .:/go/src/canvas/code
+      - .:/go/src/canvas
     environment:
       - DBUSER=root
       - DBPASS=canvas
