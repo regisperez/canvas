@@ -30,7 +30,7 @@ services:
       - db
     restart: always
     volumes:
-      - .:/home/ec2-user/canvas-test
+      - .:/go/src/canvas/code
     environment:
       - DBUSER=root
       - DBPASS=canvas
